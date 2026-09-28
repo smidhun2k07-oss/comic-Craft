@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ComicCraft - Create Your Comic</title>
+<style>
+body{font-family:Arial;background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center}
+.container{background:white;padding:40px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.3);width:500px;max-width:90%}
+h1{text-align:center;color:#764ba2}
+label{font-weight:bold;margin-top:15px;display:block}
+input,select,textarea{width:100%;padding:10px;margin-top:5px;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}
+button{width:100%;padding:12px;margin-top:20px;background:#764ba2;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer}
+button:hover{background:#667eea}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎨 ComicCraft</h1>
+<p style="text-align:center;color:#666">AI Comic Story Creator using Gemini</p>
+{% if error %}
+<div style="padding:12px;border-radius:8px;background:#ffe6e6;color:#8a1f1f;border:1px solid #f5b0b0;margin-bottom:15px;">
+{{ error }}
+</div>
+{% endif %}
+<form action="/generate" method="post">
+<label>Story Prompt</label>
+<textarea name="story_prompt" rows="3" required placeholder="A brave fox exploring an enchanted forest..."></textarea>
+
+<label>Main Character Name</label>
+<input type="text" name="character_name" required placeholder="Foxy" value="Alex">
+
+<label>Setting</label>
+<select name="setting">
+<option value="forest">Forest</option>
+<option value="city">City</option>
+<option value="space">Space</option>
+<option value="school">School</option>
+<option value="ocean">Ocean</option>
+<option value="desert">Desert</option>
+</select>
+
+<label>Story Tone</label>
+<select name="tone">
+<option value="adventurous">Adventurous</option>
+<option value="funny">Funny</option>
+<option value="dramatic">Dramatic</option>
+<option value="poetic">Poetic</option>
+<option value="light-hearted">Light-hearted</option>
+</select>
+
+<label>Art Style</label>
+<select name="art_style">
+<option value="anime">Anime</option>
+<option value="comic book">Comic Book</option>
+<option value="realistic">Realistic</option>
+<option value="pixel art">Pixel Art</option>
+<option value="cartoon">Cartoon</option>
+</select>
+
+<button type="submit">Generate Comic 🚀</button>
+</form>
+<p style="text-align:center;margin-top:15px;font-size:12px"><a href="/docs">API Docs</a> | Built with Gemini</p>
+</div>
+</body>
+</html>

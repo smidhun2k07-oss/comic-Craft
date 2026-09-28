@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Comic - ComicCraft</title>
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
+.header{text-align:center;background:white;padding:20px;border-radius:10px;margin-bottom:20px}
+.panel{background:white;margin:20px auto;max-width:700px;padding:25px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.panel img{width:100%;border-radius:10px;max-height:600px;object-fit:contain}
+.scene{font-style:italic;color:#555;margin:10px 0}
+.caption{font-weight:bold;color:#764ba2}
+.narration{line-height:1.6}
+.download{text-align:center;margin:30px}
+.btn{padding:12px 25px;background:#28a745;color:white;text-decoration:none;border-radius:8px;font-size:16px;display:inline-block;margin:5px}
+.btn-blue{background:#764ba2}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🎉 Your Comic is Ready! - {{ character_name }}</h1>
+<div class="download">
+<a class="btn" href="{{ pdf_url }}" download>📥 Download Your Comic as PDF</a>
+<a class="btn btn-blue" href="/export-success">Export Done ✓</a>
+<a class="btn btn-blue" href="/">Create Another</a>
+</div>
+</div>
+
+{% for p in layout %}
+<div class="panel">
+<h2>Panel {{ p.panel_number }}: {{ p.title }}</h2>
+<img src="{{ p.image_path }}" alt="{{ p.title }}">
+<p class="scene">Scene: {{ p.scene_description }}</p>
+<p><span class="caption">Caption:</span> {{ p.caption }}</p>
+<p class="narration"><span class="caption">Narration:</span> {{ p.narration }}</p>
+<details><summary>Image Prompt</summary>{{ p.image_prompt }}</details>
+</div>
+{% endfor %}
+
+<div class="download">
+<a class="btn" href="{{ pdf_url }}" download>📥 Download PDF</a>
+<a class="btn btn-blue" href="/">🏠 Home</a>
+</div>
+</body>
+</html>
